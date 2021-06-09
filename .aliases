@@ -36,6 +36,7 @@ alias gbD='git branch -D'
 
 alias gco='git checkout'
 alias gcb='git checkout -b'
+alias gcom="git checkout master"
 
 alias gm='git merge'
 
