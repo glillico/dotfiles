@@ -1,0 +1,28 @@
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{W}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{W}%m/%d %{W}%C%A%{g}]'
+
+# set TERM type
+term screen-256color
+
+# no welcome message
+startup_message off
+
+# scrollback buffer
+defscrollback 5000
+
+# window numbering starts at 1 not 0
+bind c screen 1
+bind ^c screen 1
+#shelltitle "Shell"
+#screen -t "Shell" 1 zsh
+screen 1 zsh
+
+# fn+F1-8 switch to those windows (OSX keeps 9-12 reserved for dashboard)
+bindkey "^[OP" select 1
+bindkey "^[OQ" select 2
+bindkey "^[OR" select 3
+bindkey "^[OS" select 4
+bindkey "^[[15~" select 5
+bindkey "^[[17~" select 6
+bindkey "^[[18~" select 7
+bindkey "^[[19~" select 8
