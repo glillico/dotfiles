@@ -117,7 +117,7 @@ nf() {
 # Super useful Docker container oneshots.
 # Usage: dockrun, or dockrun [centos7|fedora27|debian9|debian8|ubuntu1404|etc.]
 dockrun() {
- docker run -it geerlingguy/docker-"${1:-ubuntu1604}"-ansible /bin/bash
+ docker run -it glillico/docker-"${1:-ubuntu2004}"-ansible /bin/bash
 }
 
 # Enter a running Docker container.
