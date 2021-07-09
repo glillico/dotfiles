@@ -67,6 +67,3 @@ alias vbr="vagrant box remove"
 alias vbl="vagrant box list"
 alias vbo="vagrant box outdated"
 alias vbu="vagrant box update"
-
-alias aae='source ~/Documents/Development/Python_VENVs/ansible-current/bin/activate'
-alias dae='deactivate'

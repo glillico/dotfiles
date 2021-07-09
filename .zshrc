@@ -1,5 +1,5 @@
-# Set PATH
-PATH=~/Documents/Development/Python_VENVs/ansible-current/bin:$PATH
+# Activate 'ansible' python virtual environment.
+source ~/Documents/Development/Python_VENVs/ansible/bin/activate
 
 # Colour output on Mac OS
 unset LSCOLORS
@@ -14,10 +14,11 @@ unsetopt nomatch
 # Prompt
 if [ $(uname -s) = Darwin ]
 then
-  PROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F%3~%f%b'$'\n''%# '
+  MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F%3~%f%b'$'\n''%# '
 else
-  PROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %*%f %F%3~%f%b'$'\n''%# '
+  MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %*%f %F%3~%f%b'$'\n''%# '
 fi
+PROMPT=${MYPROMPT}
 
 # Allow history search via up/down keys
 if [ -f /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]
@@ -91,6 +92,17 @@ fi
 ############
 # Functions
 ############
+
+aae() {
+  source ~/Documents/Development/Python_VENVs/ansible/bin/activate
+  # PROMPT=$'\n''(ansible) ${MYPROMPT}'
+  PROMPT=${MYPROMPT}
+}
+
+dae() {
+  deactivate
+  PROMPT=${MYPROMPT}
+}
 
 # Show contents of known_hosts file with line numbers
 knownls() {
