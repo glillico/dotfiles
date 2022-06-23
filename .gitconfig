@@ -1,6 +1,6 @@
 [user]
-  name = Jeff Geerling
-  email = geerlingguy@mac.com
+  name = Graham Lillico
+  email = <My Email Address>
 [core]
   editor = vi
   excludesfile = ~/.gitignore
@@ -13,7 +13,7 @@
 [init]
   defaultBranch = master
 [web]
-  browser = google-chrome
+  browser = safari
 [credential]
   helper = osxkeychain
 [push]
@@ -22,6 +22,13 @@
   tool = kdiff3
 [difftool]
   prompt = false
+[pull]
+  rebase = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [alias]
   c = commit
   ca = commit -a
@@ -30,5 +37,3 @@
   d = diff
   dc = diff --cached
   l = log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit
-[pull]
-	rebase = true
