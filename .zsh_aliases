@@ -6,6 +6,7 @@ alias grep="grep --colour --devices=skip"
 alias history='history -E'
 alias hist='history -E 1'
 alias hub='cd ~/Development/GitHub'
+alias dev='cd ~/Development'
 
 ################
 # Play it safe!
