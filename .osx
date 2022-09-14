@@ -198,14 +198,14 @@ defaults write com.apple.universalaccess reduceTransparency -bool true
 # 12: Notification Center
 # 13: Lock Screen
 # 14: Quick Note
-# Top left screen corner → Launchpad
-defaults write com.apple.dock wvous-tl-corner -int 11
+# Top left screen corner → no-op
+defaults write com.apple.dock wvous-tl-corner -int 1
 defaults write com.apple.dock wvous-tl-modifier -int 0
 # Top right screen corner → no-op
 defaults write com.apple.dock wvous-tr-corner -int 1
 defaults write com.apple.dock wvous-tr-modifier -int 0
-# Bottom left screen corner → Lock Screen
-defaults write com.apple.dock wvous-bl-corner -int 13
+# Bottom left screen corner → no-op
+defaults write com.apple.dock wvous-bl-corner -int 1
 defaults write com.apple.dock wvous-bl-modifier -int 0
 # Bottom right screen corner → Quick Note
 defaults write com.apple.dock wvous-br-corner -int 14
