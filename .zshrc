@@ -1,5 +1,8 @@
 # Activate 'ansible' python virtual environment.
-source ~/Development/Python_VENVs/ansible/bin/activate
+if [ -f ~/Development/Python_VENVs/ansible/bin/activate ]
+then
+  source ~/Development/Python_VENVs/ansible/bin/activate
+fi
 
 # Colour output on Mac OS
 unset LSCOLORS
@@ -11,7 +14,8 @@ export CLICOLOR=1
 unsetopt nomatch
 
 # Prompt
-if [ $(uname -s) = Darwin ]
+arch_platform="$(uname -s)"
+if [ ${arch_platform} = "Darwin" ]
 then
   MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F%3~%f%b'$'\n''%# '
 else
@@ -19,12 +23,31 @@ else
 fi
 PROMPT=${MYPROMPT}
 
+###########
+# Homebrew
+###########
+# Only autoupdate homebrew once a week
+export HOMEBREW_AUTO_UPDATE_SECS=604800
+# Set architecture-specific brew share path.
+arch_name="$(uname -m)"
+if [ "${arch_name}" = "x86_64" ]; then
+  share_path="/usr/local/share"
+elif [ "${arch_name}" = "arm64" ]; then
+  share_path="/opt/homebrew/share"
+elif [ "${arch_name}" = "aarch64" ]; then
+  share_path="/usr/local/share"
+else
+  echo "Unknown architecture: ${arch_name}"
+fi
+
 # Allow history search via up/down keys
-if [ -f /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]
+if [ -f ${share_path}/zsh-history-substring-search/zsh-history-substring-search.zsh ]
 then
-  source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+  source ${share_path}/zsh-history-substring-search/zsh-history-substring-search.zsh
   bindkey '^[[A' history-substring-search-up
+  bindkey '^[OA' history-substring-search-up
   bindkey '^[[B' history-substring-search-down
+  bindkey '^[OB' history-substring-search-down
 fi
 
 # Settings for history.
@@ -66,21 +89,9 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 
-###########
-# Homebrew
-###########
-# Only autoupdate homebrew once a week
-export HOMEBREW_AUTO_UPDATE_SECS=604800
-# Set architecture-specific brew share path.
-arch_name="$(uname -m)"
-if [ "${arch_name}" = "x86_64" ]; then
-  share_path="/usr/local/share"
-elif [ "${arch_name}" = "arm64" ]; then
-  share_path="/opt/homebrew/share"
-else
-  echo "Unknown architecture: ${arch_name}"
-fi
-
+#########
+# Docker
+#########
 # set default docker build to use --progress=plain
 export BUILDKIT_PROGRESS=plain
 
