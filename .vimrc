@@ -1,7 +1,7 @@
 syntax on               " enable syntax highlighting
 set cursorline          " highlight the current line
 " set background=dark   " darker color scheme
-" set ruler             " show line number in bar
+set ruler               " show line number in bar
 set nobackup            " don't create pointless backup files; Use VCS instead
 set autoread            " watch for file changes
 set number              " show line numbers
@@ -14,7 +14,10 @@ set scrolloff=5         " show at least 5 lines above/below
 filetype on             " enable filetype detection
 filetype indent on      " enable filetype-specific indenting
 filetype plugin on      " enable filetype-specific plugins
-" colorscheme cobalt      " requires cobalt.vim to be in ~/.vim/colors
+
+"mouse settings
+set mouse=
+set ttymouse=
 
 " column-width visual indication
 let &colorcolumn=join(range(81,999),",")
@@ -33,11 +36,9 @@ set visualbell          " but leave on a visual bell
 
 " search
 set hlsearch            " highlighted search results
-set showmatch           " show matching bracket
 
 " other
 set guioptions=aAace    " don't show scrollbar in MacVim
-" call pathogen#infect()  " use pathogen
 
 " clipboard
 set clipboard=unnamed   " allow yy, etc. to interact with OS X clipboard
