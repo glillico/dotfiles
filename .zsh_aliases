@@ -69,3 +69,8 @@ alias vbr="vagrant box remove"
 alias vbl="vagrant box list"
 alias vbo="vagrant box outdated"
 alias vbu="vagrant box update"
+
+##########################
+# mac-dev-playbook alias.
+##########################
+alias macup='ANSIBLE_CONFIG=~/Development/macup/mac-dev-playbook/ansible.cfg ansible-playbook -i ~/Development/macup/mac-dev-playbook/inventory ~/Development/macup/mac-dev-playbook/main.yml -K'
