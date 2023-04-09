@@ -1,7 +1,8 @@
 ##################
 # General aliases
 ##################
-alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
+#alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
+alias code='/opt/homebrew/bin/codium'
 alias grep="grep --colour --devices=skip"
 alias history='history -E'
 alias hist='history -E 1'
