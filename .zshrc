@@ -89,6 +89,11 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
   fi
 }
 
+###########
+# Set PATH
+###########
+export PATH=$PATH:/opt/homebrew/bin
+
 #########
 # Docker
 #########
