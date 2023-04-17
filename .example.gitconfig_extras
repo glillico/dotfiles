@@ -1,0 +1,9 @@
+# Rename this file to .gitconfig_extras and modify, then create a link to ~/
+[user]
+  signingkey = PLACE SSH SIGNING KEY HERE
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+  gpgsign = true
