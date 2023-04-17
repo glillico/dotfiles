@@ -4,3 +4,4 @@
 Thumbs.db
 .bundle
 *.retry
+.gitconfig_extras
