@@ -19,7 +19,7 @@ if [ ${arch_platform} = "Darwin" ]
 then
   MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F%3~%f%b'$'\n''%# '
 else
-  MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %*%f %F%3~%f%b'$'\n''%# '
+  MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %f%3~%f%b'$'\n''%# '
 fi
 PROMPT=${MYPROMPT}
 
