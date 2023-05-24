@@ -1,3 +1,8 @@
+###########
+# Set PATH
+###########
+export PATH=/opt/homebrew/bin:$PATH
+
 # Activate 'ansible' python virtual environment.
 if [ -f ~/Development/Python_VENVs/ansible/bin/activate ]
 then
@@ -92,11 +97,6 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
     hook_com[misc]='%F{red}U%F'
   fi
 }
-
-###########
-# Set PATH
-###########
-export PATH=/opt/homebrew/bin:$PATH
 
 #########
 # Docker
