@@ -4,9 +4,9 @@
 export PATH=/opt/homebrew/bin:$PATH
 
 # Activate 'ansible' python virtual environment.
-if [ -f ~/Development/Python_VENVs/ansible/bin/activate ]
+if [ -f ~/Development/Python_VENVs/venv/bin/activate ]
 then
-  source ~/Development/Python_VENVs/ansible/bin/activate
+  source ~/Development/Python_VENVs/venv/bin/activate
 fi
 
 # Colour output on Mac OS
