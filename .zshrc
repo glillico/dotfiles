@@ -121,3 +121,12 @@ if [ -f ~/.zsh_functions ]
 then
   source ~/.zsh_functions
 fi
+
+####################### 
+# Local customisations
+#######################
+# Include .zsh_local file if available.
+if [ -f ~/.zsh_local ]
+then
+  source ~/.zsh_local
+fi
