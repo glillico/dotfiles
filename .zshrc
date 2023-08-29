@@ -22,7 +22,7 @@ unsetopt nomatch
 arch_platform="$(uname -s)"
 if [ ${arch_platform} = "Darwin" ]
 then
-  MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F%3~%f%b'$'\n''%# '
+  MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F{blue}%3~%f%b'$'\n''%# '
 else
   MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %f%3~%f%b'$'\n''%# '
 fi
@@ -82,7 +82,7 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F(%b)%c%u%m'
+zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%c%u%m'
 zstyle ':vcs_info:*' enable git
 
 zstyle ':vcs_info:*' check-for-changes true
