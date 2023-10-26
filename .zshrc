@@ -1,7 +1,11 @@
 ###########
 # Set PATH
 ###########
-export PATH=/opt/homebrew/bin:$PATH
+arch_platform="$(uname -s)"
+if [ ${arch_platform} = "Darwin" ]
+then
+  export PATH=/opt/homebrew/bin:$PATH
+fi
 
 # Activate 'ansible' python virtual environment.
 if [ -f ~/Development/Python_VENVs/venv/bin/activate ]
@@ -103,6 +107,15 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 #########
 # set default docker build to use --progress=plain
 export BUILDKIT_PROGRESS=plain
+
+##############
+# Completions
+##############
+# Include .zsh_completions file if available.
+if [ -f ~/.zsh_completions ]
+then
+  source ~/.zsh_completions
+fi
 
 ##########
 # Aliases
