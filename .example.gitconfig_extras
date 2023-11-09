@@ -1,4 +1,4 @@
-# Rename this file to .gitconfig_extras and modify, then create a link to ~/
+# Copy this file to .gitconfig_extras and modify, then create a link to ~/
 [user]
   signingkey = PLACE SSH SIGNING KEY HERE
 [gpg]
