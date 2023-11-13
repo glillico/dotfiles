@@ -289,6 +289,13 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Flurry path /System/Library/Screen\ Savers/Flurry.saver type 0
 
 ###############################################################################
+# App Store                                                                   #
+###############################################################################
+
+# Disable in-app rating requests from apps downloaded from the App Store.
+defaults write com.apple.appstore InAppReviewEnabled -int 0
+
+###############################################################################
 # Kill/restart affected applications                                          #
 ###############################################################################
 
