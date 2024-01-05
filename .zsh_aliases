@@ -8,6 +8,7 @@ alias history='history -E'
 alias hist='history -E 1'
 alias hub='cd ~/Development/GitHub'
 alias dev='cd ~/Development'
+alias homelab='cd ~/Development/homelab'
 
 ################
 # Play it safe!
