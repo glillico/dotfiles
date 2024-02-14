@@ -111,35 +111,35 @@ export BUILDKIT_PROGRESS=plain
 ##############
 # Completions
 ##############
-# Include .zsh_completions file if available.
-if [ -f ~/.zsh_completions ]
+# Include ~/.zsh/completions.zsh file if available.
+if [ -f ~/.zsh/completions.zsh ]
 then
-  source ~/.zsh_completions
+  source ~/.zsh/completions.zsh
 fi
 
 ##########
 # Aliases
 ##########
-# Include .zsh_aliases file if available.
-if [ -f ~/.zsh_aliases ]
+# Include ~/.zsh/aliases.zsh file if available.
+if [ -f ~/.zsh/aliases.zsh ]
 then
-  source ~/.zsh_aliases
+  source ~/.zsh/aliases.zsh
 fi
 
 ############
 # Functions
 ############
-# Include .zsh_functions file if available.
-if [ -f ~/.zsh_functions ]
+# Include ~/.zsh/functions.zsh file if available.
+if [ -f ~/.zsh/functions.zsh ]
 then
-  source ~/.zsh_functions
+  source ~/.zsh/functions.zsh
 fi
 
 ####################### 
 # Local customisations
 #######################
-# Include .zsh_local file if available.
-if [ -f ~/.zsh_local ]
+# Include ~/.zsh/local.zsh file if available.
+if [ -f ~/.zsh/local.zsh ]
 then
-  source ~/.zsh_local
+  source ~/.zsh/local.zsh
 fi
