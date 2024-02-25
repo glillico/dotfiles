@@ -9,6 +9,10 @@ alias hist='history -E 1'
 alias hub='cd ~/Development/GitHub'
 alias dev='cd ~/Development'
 alias homelab='cd ~/Development/homelab'
+if [ -f /opt/homebrew/bin/eza ]; then
+  alias ls='eza --icons --group-directories-first'
+  alias ll='eza --icons --group-directories-first -l'
+fi
 
 ################
 # Play it safe!
