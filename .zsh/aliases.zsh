@@ -10,8 +10,8 @@ alias hub='cd ~/Development/GitHub'
 alias dev='cd ~/Development'
 alias homelab='cd ~/Development/homelab'
 if [ -f /opt/homebrew/bin/eza ]; then
-  alias ls='eza --icons --group-directories-first'
-  alias ll='eza --icons --group-directories-first -l'
+  alias ls='eza --icons --group-directories-first --git --header'
+  alias ll='eza --icons --group-directories-first --git --header -l'
 fi
 
 ################
