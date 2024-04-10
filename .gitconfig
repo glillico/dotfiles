@@ -1,6 +1,5 @@
 [user]
-  name = Graham Lillico
-  email = 63392565+glillico@users.noreply.github.com
+# Settings defined in ~/.gitconfig_extras
 [core]
   editor = vi
   excludesfile = ~/.gitignore
@@ -15,7 +14,7 @@
 [web]
   browser = safari
 [credential]
-  helper = osxkeychain
+# Settings defined in ~/.gitconfig_extras
 [push]
   default = simple
 [merge]

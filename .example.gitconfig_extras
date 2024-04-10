@@ -1,6 +1,10 @@
 # Copy this file to .gitconfig_extras and modify, then create a link to ~/
 [user]
+  name = PLACE NAME HERE
+  email = PLACE EMAIL ADDRESS HERE
   signingkey = PLACE SSH SIGNING KEY HERE
+[credential]
+  helper = osxkeychain
 [gpg]
   format = ssh
 [gpg "ssh"]
