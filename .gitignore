@@ -5,4 +5,5 @@ Thumbs.db
 .bundle
 *.retry
 .gitconfig_extras
-.zsh_local
+.zsh/local.zsh
+
