@@ -26,7 +26,6 @@ unsetopt nomatch
 arch_platform="$(uname -s)"
 if [ ${arch_platform} = "Darwin" ]; then
   if [ ${TERM_PROGRAM} = "WarpTerminal" ]; then
-    # MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F{blue}%3~%f%b'
     MYPROMPT=$'\n''%F{green} %*%f %F{blue}%3~%f%b'
   elif [ ${TERM_PROGRAM} = "vscode" ]; then
     MYPROMPT=$'\n''%F{green} %*%f %F{blue}%3~%f%b'$'\n''%# '
@@ -34,7 +33,15 @@ if [ ${arch_platform} = "Darwin" ]; then
     MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F{blue}%3~%f%b'$'\n''%# '
   fi
 else
-  MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %f%3~%f%b'$'\n''%# '
+  if [ -v TERM_PROGRAM ]; then
+    if [ ${TERM_PROGRAM} = "WarpTerminal" ]; then
+      MYPROMPT=$'\n''%F{green}%n@%m %F{blue}%3~%f%b'
+    else
+      MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %F{blue}%3~%f%b'$'\n''%# '
+    fi
+  else
+    MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %F{blue}%3~%f%b'$'\n''%# '
+  fi
 fi
 PROMPT=${MYPROMPT}
 
