@@ -1,7 +1,12 @@
+#####################
+# Set arch variables
+#####################
+arch_platform="$(uname -s)"
+arch_name="$(uname -m)"
+
 ###########
 # Set PATH
 ###########
-arch_platform="$(uname -s)"
 if [ ${arch_platform} = "Darwin" ]
 then
   export PATH=/opt/homebrew/bin:$PATH
@@ -23,7 +28,6 @@ export CLICOLOR=1
 unsetopt nomatch
 
 # Prompt
-arch_platform="$(uname -s)"
 if [ ${arch_platform} = "Darwin" ]; then
   if [ ${TERM_PROGRAM} = "WarpTerminal" ]; then
     MYPROMPT=$'\n''%F{green} %*%f %F{blue}%3~%f%b'
@@ -51,7 +55,6 @@ PROMPT=${MYPROMPT}
 # Only autoupdate homebrew once a week
 export HOMEBREW_AUTO_UPDATE_SECS=604800
 # Set architecture-specific brew share path.
-arch_name="$(uname -m)"
 if [ "${arch_name}" = "x86_64" ]; then
   share_path="/usr/local/share"
 elif [ "${arch_name}" = "arm64" ]; then
