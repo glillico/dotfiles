@@ -28,25 +28,15 @@ export CLICOLOR=1
 unsetopt nomatch
 
 # Prompt
-if [ ${arch_platform} = "Darwin" ]; then
-  if [ ${TERM_PROGRAM} = "WarpTerminal" ]; then
-    MYPROMPT=$'\n''%F{green} %*%f %F{blue}%3~%f%b'
-  elif [ ${TERM_PROGRAM} = "vscode" ]; then
-    MYPROMPT=$'\n''%F{green} %*%f %F{blue}%3~%f%b'$'\n''%# '
+if [ -v TERM_PROGRAM ]; then
+  if [ -f ~/.zsh/${TERM_PROGRAM}.zsh ]; then
+    source ~/.zsh/${TERM_PROGRAM}.zsh
   else
-    MYPROMPT=$'\n''%(?.%F{green}.%F{red}) %*%f %F{blue}%3~%f%b'$'\n''%# '
+    source ~/.zsh/Default-TERM_PROGRAM.zsh
   fi
 else
-  if [ -v TERM_PROGRAM ]; then
-    if [ ${TERM_PROGRAM} = "WarpTerminal" ]; then
-      MYPROMPT=$'\n''%F{green}%n@%m %F{blue}%3~%f%b'
-    else
-      MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %F{blue}%3~%f%b'$'\n''%# '
-    fi
-  else
-    MYPROMPT=$'\n''%(?.%F{green}.%F{red})%n@%m %F{blue}%3~%f%b'$'\n''%# '
-  fi
-fi
+  source ~/.zsh/NO-TERM_PROGRAM.zsh
+fi  
 PROMPT=${MYPROMPT}
 
 ###########
@@ -102,7 +92,7 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%c%u%m'
+zstyle ':vcs_info:git:*' formats '%F{240}%r (%b%)%c%u%m%f'
 zstyle ':vcs_info:*' enable git
 
 zstyle ':vcs_info:*' check-for-changes true
