@@ -4,6 +4,16 @@
 arch_platform="$(uname -s)"
 arch_name="$(uname -m)"
 
+##########################
+# Set OS type prompt icon
+##########################
+if [ -f ~/.zsh/os_type.zsh ]
+then
+  source ~/.zsh/os_type.zsh
+else
+  PROMPT_DISTRO="√"
+fi
+
 ###########
 # Set PATH
 ###########
