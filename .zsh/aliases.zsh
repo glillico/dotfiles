@@ -49,6 +49,7 @@ alias gcb='git checkout -b'
 alias gcom="git checkout master"
 
 alias gf='git fetch'
+alias gfd='git fetch --dry-run'
 alias gfp='git fetch -pv'
 
 alias gm='git merge'
