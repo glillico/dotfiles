@@ -3,6 +3,8 @@
   name = PLACE NAME HERE
   email = PLACE EMAIL ADDRESS HERE
   signingkey = PLACE SSH SIGNING KEY HERE
+[core]
+	editor = codium --wait
 [credential]
   helper = osxkeychain
 [gpg]
