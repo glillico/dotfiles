@@ -1,7 +1,7 @@
 [user]
 # Settings defined in ~/.gitconfig_extras
 [core]
-  editor = vi
+	editor = codium --wait
   excludesfile = ~/.gitignore
   autocrlf = input
 [color]
