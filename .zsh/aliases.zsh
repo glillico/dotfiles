@@ -3,6 +3,7 @@
 ##################
 #alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
 alias ..='cd ..'
+alias ...='cd ../..'
 # alias code='open -a VSCodium'
 alias code='codium'
 alias dev='cd ~/Development'
@@ -13,6 +14,7 @@ alias homelab='cd ~/Development/homelab'
 alias hub='cd ~/Development/GitHub'
 if [ -f /opt/homebrew/bin/eza ]; then
   alias ls='eza --group-directories-first --git --header'
+  alias la='eza --group-directories-first --git --header -la'
   alias ll='eza --group-directories-first --git --header -l'
 fi
 
