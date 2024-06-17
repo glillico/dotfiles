@@ -5,7 +5,7 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 # alias code='open -a VSCodium'
-alias code='codium'
+alias code='codium --profile GL-VSCodium'
 alias dev='cd ~/Development'
 alias grep='grep --colour --devices=skip'
 alias hist='history -E 1'
