@@ -16,6 +16,9 @@ if [ -f /opt/homebrew/bin/eza ]; then
   alias ls='eza --group-directories-first --git --header'
   alias la='eza --group-directories-first --git --header -la'
   alias ll='eza --group-directories-first --git --header -l'
+else
+  alias la='ls -la'
+  alias ll='ls -l'
 fi
 
 ################
@@ -28,21 +31,6 @@ alias 'rm=rm -i'
 ###############
 # Git aliases.
 ###############
-# alias gbd='git branch -d'
-# alias gbD='git branch -D'
-# alias gc='git commit'
-# alias gcam='git commit -a -m'
-# alias gcb='git checkout -b'
-# alias gcm='git commit -m'
-# alias ggl='git pull origin'
-# alias ggp='git push origin'
-# alias ggu='git pull --rebase origin'
-# alias glog='git log --oneline --decorate --graph'
-# alias gloga='git log --oneline --decorate --graph --all'
-# alias gs='git status'
-# alias gsa='git status -uall'
-# alias gsb='git status --short --branch'
-# alias gss='git status --short'
 alias ga='git add'
 alias gaa='git add --all'
 alias gamend='git commit -a --amend --no-edit'
