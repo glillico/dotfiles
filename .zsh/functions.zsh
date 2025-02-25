@@ -4,7 +4,6 @@
 
 function aae() {
   source ~/Development/Python_VENVs/venv/bin/activate
-  # PROMPT=$'\n''(ansible) ${MYPROMPT}'
   PROMPT=${MYPROMPT}
 }
 
