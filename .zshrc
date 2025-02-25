@@ -7,14 +7,14 @@ arch_name="$(uname -m)"
 ###########
 # Homebrew
 ###########
-# Only autoupdate homebrew once a week
-export HOMEBREW_AUTO_UPDATE_SECS=604800
 # Set architecture-specific brew share path.
 if [ ${arch_platform} = "Darwin" ]
 then
+# Only autoupdate homebrew once a week
+  export HOMEBREW_AUTO_UPDATE_SECS=604800
   share_path="/opt/homebrew/share"
-else
-  echo "Unknown architecture: ${arch_name}"
+# else
+#   echo "Unknown architecture: ${arch_name}"
 fi
 
 # Colour output on Mac OS
