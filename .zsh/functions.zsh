@@ -3,8 +3,9 @@
 ############
 
 function aae() {
+  export VIRTUAL_ENV_DISABLE_PROMPT=YES
   source ~/Development/Python_VENVs/venv/bin/activate
-  PROMPT=${MYPROMPT}
+  export PROMPT=${MYPROMPT}
 }
 
 function dae() {
