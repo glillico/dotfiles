@@ -11,6 +11,7 @@ alias grep='grep --colour --devices=skip'
 alias hist='history -E 1'
 alias history='history -E'
 alias homelab='cd ~/Development/homelab'
+alias hlab='cd ~/Development/homelab'
 alias hub='cd ~/Development/GitHub'
 if [ -f /opt/homebrew/bin/eza ]; then
   alias ls='eza --group-directories-first --git --header'
@@ -62,6 +63,7 @@ alias gst='git status -s'
 alias gsta='git status'
 alias gunwip='git log -n 1 | grep -q -c "\-\-WIP\-\-" && git reset HEAD~1'
 alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--WIP--"'
+alias gh-create='gh repo create --private --source=. --remote=origin && git push -u --all && gh browse'
 
 ###################
 # Vagrant aliases.
