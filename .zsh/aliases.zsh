@@ -14,9 +14,9 @@ alias homelab='cd ~/Development/homelab'
 alias hlab='cd ~/Development/homelab'
 alias hub='cd ~/Development/GitHub'
 if [ -f /opt/homebrew/bin/eza ]; then
-  alias ls='eza --group-directories-first --git --header'
-  alias la='eza --group-directories-first --git --header -la'
-  alias ll='eza --group-directories-first --git --header -l'
+  alias ls='eza --no-quotes'
+  alias ll='eza --no-quotes --git --header -gl'
+  alias lt='eza --no-quotes --git --header -gl -snew'
 else
   alias la='ls -la'
   alias ll='ls -l'
