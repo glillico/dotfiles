@@ -52,3 +52,26 @@ function denter() {
   docker exec -it $1 bash
   return 0
 }
+
+function g() {
+  case $1 in
+  dev)
+    cd ~/Development
+  ;;
+  doc)
+    cd ~/Documents
+  ;;
+  down)
+    cd ~/Downloads
+  ;;
+  hlab|homelab)
+    cd ~/Development/homelab
+  ;;
+  hub)
+    cd ~/Development/GitHub
+  ;;
+  *)
+    cd ~/
+  ;;
+  esac
+}
