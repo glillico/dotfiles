@@ -15,11 +15,17 @@ alias history='history -E'
 # alias hub='cd ~/Development/GitHub'
 if [ -f /opt/homebrew/bin/eza ]; then
   alias ls='eza --no-quotes'
+  alias la='eza --no-quotes -a'
   alias ll='eza --no-quotes --git --header -gl'
   alias lt='eza --no-quotes --git --header -gl -snew'
+  alias lla='eza --no-quotes --git --header -gl -a'
+  alias lta='eza --no-quotes --git --header -gl -a -snew'
 else
   alias la='ls -la'
   alias ll='ls -l'
+  alias lt='ls -ltr'
+  alias lla='ls -l -a'
+  alias lta='ls -ltr -a'
 fi
 
 ################
