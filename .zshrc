@@ -3,6 +3,7 @@
 #####################
 arch_platform="$(uname -s)"
 arch_name="$(uname -m)"
+PROMPT_DISTRO="√"
 
 ###########
 # Homebrew
@@ -58,48 +59,20 @@ setopt EXTENDED_HISTORY
 # Helps avoid mistakes like 'rm * o' when 'rm *.o' was intended
 setopt RM_STAR_WAIT
 
+# Allow prompt expansion
++setopt PROMPT_SUBST
+
 #########
 # Docker
 #########
 # set default docker build to use --progress=plain
 export BUILDKIT_PROGRESS=plain
 
-##############
-# Completions
-##############
-# Include ~/.zsh/completions.zsh file if available.
-if [ -f ~/.zsh/completions.zsh ]
-then
-  source ~/.zsh/completions.zsh
-fi
-
-##########
-# Aliases
-##########
-# Include ~/.zsh/aliases.zsh file if available.
-if [ -f ~/.zsh/aliases.zsh ]
-then
-  source ~/.zsh/aliases.zsh
-fi
-
-############
-# Functions
-############
-# Include ~/.zsh/functions.zsh file if available.
-if [ -f ~/.zsh/functions.zsh ]
-then
-  source ~/.zsh/functions.zsh
-fi
-
-##########################
-# Set OS type prompt icon
-##########################
-if [ -f ~/.zsh/os_type.zsh ]
-then
-  source ~/.zsh/os_type.zsh
-else
-  PROMPT_DISTRO="√"
-fi
+[[ -f ~/.zsh/completions.zsh ]] && source ~/.zsh/completions.zsh
+[[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
+[[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
+[[ -f ~/.zsh/git.zsh ]] && source ~/.zsh/git.zsh
+[[ -f ~/.zsh/os_type.zsh ]] && source ~/.zsh/os_type.zsh
 
 ###########
 # Set PATH
@@ -108,28 +81,6 @@ if [ ${arch_platform} = "Darwin" ]
 then
   export PATH=/opt/homebrew/bin:$PATH
 fi
-
-# git branch prompt
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
-zstyle ':vcs_info:git:*' formats '%F{240}%r (%b%)%c%u%m%f'
-zstyle ':vcs_info:*' enable git
-
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' stagedstr '%F{green}S%F'
-zstyle ':vcs_info:*' unstagedstr '%F{yellow}M%F'
-zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
-
-+vi-git-untracked() {
-  if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) == 'true' ]] && \
-    git status --porcelain | grep -m 1 '^??' &>/dev/null
-  then
-    hook_com[misc]='%F{red}U%F'
-  fi
-}
 
 # Prompt
 if [ -v TERM_PROGRAM ]; then
@@ -146,8 +97,4 @@ PROMPT=${MYPROMPT}
 ####################### 
 # Local customisations
 #######################
-# Include ~/.zsh/local.zsh file if available.
-if [ -f ~/.zsh/local.zsh ]
-then
-  source ~/.zsh/local.zsh
-fi
+[[ -f ~/.zsh/local.zsh ]] && source ~/.zsh/local.zsh
