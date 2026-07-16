@@ -41,11 +41,8 @@ fi
 HISTORY_IGNORE="(ls|[bf]g|exit|reset|clear|history|nf|hist|history 0)"
 HISTSIZE=50000
 SAVEHIST=100000
+HISTFILE=~/.zsh_history
 
-if [ ${arch_platform} = "Linux" ]
-then
-  HISTFILE=~/.zsh_history
-fi
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
