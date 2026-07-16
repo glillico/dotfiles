@@ -1,21 +1,15 @@
-#####################
 # Set arch variables
-#####################
 arch_platform="$(uname -s)"
 arch_name="$(uname -m)"
 PROMPT_DISTRO="√"
 
-###########
 # Homebrew
-###########
 # Set architecture-specific brew share path.
 if [ ${arch_platform} = "Darwin" ]
 then
 # Only autoupdate homebrew once a week
   export HOMEBREW_AUTO_UPDATE_SECS=604800
   share_path="/opt/homebrew/share"
-# else
-#   echo "Unknown architecture: ${arch_name}"
 fi
 
 # Colour output on Mac OS
@@ -59,9 +53,7 @@ setopt RM_STAR_WAIT
 # Allow prompt expansion
 setopt PROMPT_SUBST
 
-#########
 # Docker
-#########
 # set default docker build to use --progress=plain
 export BUILDKIT_PROGRESS=plain
 
@@ -71,9 +63,7 @@ export BUILDKIT_PROGRESS=plain
 [[ -f ~/.zsh/git.zsh ]] && source ~/.zsh/git.zsh
 [[ -f ~/.zsh/os_type.zsh ]] && source ~/.zsh/os_type.zsh
 
-###########
 # Set PATH
-###########
 if [ ${arch_platform} = "Darwin" ]
 then
   export PATH=/opt/homebrew/bin:$PATH
@@ -91,7 +81,5 @@ else
 fi  
 PROMPT=${MYPROMPT}
 
-####################### 
 # Local customisations
-#######################
 [[ -f ~/.zsh/local.zsh ]] && source ~/.zsh/local.zsh
