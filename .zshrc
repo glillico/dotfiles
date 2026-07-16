@@ -60,7 +60,7 @@ setopt EXTENDED_HISTORY
 setopt RM_STAR_WAIT
 
 # Allow prompt expansion
-+setopt PROMPT_SUBST
+setopt PROMPT_SUBST
 
 #########
 # Docker
