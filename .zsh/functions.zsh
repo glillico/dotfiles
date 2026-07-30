@@ -75,15 +75,24 @@ typeset -ga G_DIR_KEYS=(${(o)${(k)G_DIRS}})
 
 # Change directory function
 function g() {
-  local action=""
+  local -a actions
   local input=""
 
   for arg in "$@"; do
     case "$arg" in
-      -e) action=edit ;;
-      -f) action=file ;;
-      -g) action=git ;;
-      *) input="${arg%/}" ;;
+      -*)
+        for (( i=2; i<=${#arg}; i++ )); do
+          case "${arg[$i]}" in
+            e) actions+=(edit) ;;
+            f) actions+=(file) ;;
+            g) actions+=(git) ;;
+            *) echo "Unknown option: -${arg[$i]}"; return 1 ;;
+          esac
+        done
+        ;;
+      *)
+        input="${arg%/}"
+        ;;
     esac
   done
 
@@ -128,12 +137,13 @@ function g() {
 
   if [[ -d "$dest" ]]; then
     builtin cd -- "$dest"
-
-    case "$action" in
-      edit) code . ;;
-      file) open . ;;
-      git)  git status . ;;
-    esac
+    for action in $actions; do
+      case "$action" in
+        edit) code . ;;
+        file) open . ;;
+        git)  git status . ;;
+      esac
+    done
   else
     echo "Directory not found: $dest"
     return 1
