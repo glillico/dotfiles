@@ -75,17 +75,14 @@ typeset -ga G_DIR_KEYS=(${(o)${(k)G_DIRS}})
 
 # Change directory function
 function g() {
-  local edit=0
+  local action=""
   local input=""
 
   for arg in "$@"; do
     case "$arg" in
-      -e)
-        edit=1
-        ;;
-      *)
-        input="${arg%/}"
-        ;;
+      -e) action=edit ;;
+      -f) action=file ;;
+      *) input="${arg%/}" ;;
     esac
   done
 
@@ -96,6 +93,7 @@ function g() {
     echo "  -h, --help    Show help"
     echo "  -l, --list    List configured locations"
     echo "  -e            Open the location in VSCodium"
+    echo "  -f            Open the location in Finder"
     return 0
   fi
 
@@ -128,9 +126,11 @@ function g() {
 
   if [[ -d "$dest" ]]; then
     builtin cd -- "$dest"
-    if (( edit )); then
-      code .
-    fi
+
+    case "$action" in
+      edit) code . ;;
+      file) open . ;;
+    esac
   else
     echo "Directory not found: $dest"
     return 1
