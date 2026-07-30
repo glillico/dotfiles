@@ -53,25 +53,104 @@ function denter() {
   return 0
 }
 
+# Location aliases
+typeset -gA G_DIRS=(
+  dev      "$HOME/Development"
+  dl       "$HOME/Downloads"
+  docs     "$HOME/Documents"
+  hlab     "$HOME/Development/homelab"
+  homelab  "$HOME/Development/homelab"
+  hub      "$HOME/Development/GitHub"
+)
+# Location descriptions
+typeset -gA G_DIR_DESC=(
+  dev      "Development projects"
+  dl       "Downloads folder"
+  docs     "Documents"
+  hlab     "Homelab projects"
+  homelab  "Homelab projects (alias)"
+  hub      "GitHub repositories"
+)
+typeset -ga G_DIR_KEYS=(${(o)${(k)G_DIRS}})
+
+# Change directory function
 function g() {
-  case $1 in
-  dev)
-    cd ~/Development
-  ;;
-  doc)
-    cd ~/Documents
-  ;;
-  down)
-    cd ~/Downloads
-  ;;
-  hlab|homelab)
-    cd ~/Development/homelab
-  ;;
-  hub)
-    cd ~/Development/GitHub
-  ;;
-  *)
-    cd ~/
-  ;;
-  esac
+  local edit=0
+  local input=""
+
+  for arg in "$@"; do
+    case "$arg" in
+      -e)
+        edit=1
+        ;;
+      *)
+        input="${arg%/}"
+        ;;
+    esac
+  done
+
+  if [[ -z "$input" || "$input" == "-h" || "$input" == "--help" ]]; then
+    echo "Usage: g <location>[/subdirectory] [options] [-e]" 
+    echo
+    echo "Options:"
+    echo "  -h, --help    Show help"
+    echo "  -l, --list    List configured locations"
+    echo "  -e            Open the location in VSCodium"
+    return 0
+  fi
+
+  if [[ "$input" == "-l" || "$input" == "--list" ]]; then
+    local key
+    printf "%-10s %-30s %s\n" "Alias" "Description" "Location"
+    printf "%-10s %-30s %s\n" "-----" "-----------" "--------"
+
+    for key in $G_DIR_KEYS; do
+      printf '%-10s %-30s %s\n' \
+        "$key" \
+        "${G_DIR_DESC[$key]}" \
+        "${G_DIRS[$key]}"
+    done
+    return 0
+  fi
+
+  local key="${input%%/*}"
+  local subpath="${input#*/}"
+  local root="${G_DIRS[$key]}"
+  local dest="$root"
+
+  if [[ -z "$root" ]]; then
+    echo "Unknown location: $key"
+    echo "Available: ${(@j:, :)G_DIR_KEYS}"
+    return 1
+  fi
+
+  [[ "$input" != "$key" ]] && dest="$root/$subpath"
+
+  if [[ -d "$dest" ]]; then
+    builtin cd -- "$dest"
+    if (( edit )); then
+      code .
+    fi
+  else
+    echo "Directory not found: $dest"
+    return 1
+  fi
 }
+
+# Tab completion
+function _g_complete() {
+  if [[ "$words[2]" == */* ]]; then
+    local key="${words[2]%%/*}"
+    local root="${G_DIRS[$key]}"
+
+    if [[ -n "$root" ]]; then
+      _path_files -/ -W "$root" -P "$key/"
+    else
+      return 1
+    fi
+  else
+    compadd -S '/' -- $G_DIR_KEYS
+  fi
+}
+
+compdef _g_complete g
