@@ -82,6 +82,7 @@ function g() {
     case "$arg" in
       -e) action=edit ;;
       -f) action=file ;;
+      -g) action=git ;;
       *) input="${arg%/}" ;;
     esac
   done
@@ -94,6 +95,7 @@ function g() {
     echo "  -l, --list    List configured locations"
     echo "  -e            Open the location in VSCodium"
     echo "  -f            Open the location in Finder"
+    echo "  -g.           Show git status of location"
     return 0
   fi
 
@@ -130,6 +132,7 @@ function g() {
     case "$action" in
       edit) code . ;;
       file) open . ;;
+      git)  git status . ;;
     esac
   else
     echo "Directory not found: $dest"
