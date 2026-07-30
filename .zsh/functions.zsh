@@ -39,7 +39,7 @@ function nf() {
 # Usage: dockrun, or dockrun [rockylinux8|almalinux9|debian10|debian11|ubuntu2204|etc.]
 # Run on arm64 if getting errors: `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
 function dockrun() {
-  docker run -it --rm glillico/docker-"${1:-ubuntu2204}"-ansible /bin/bash
+  docker run -it --rm "${1:-glillico/docker-ubuntu2604-ansible}" /bin/bash
 }
 
 # Enter a running Docker container.
