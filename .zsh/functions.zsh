@@ -104,7 +104,7 @@ function g() {
     echo "  -l, --list    List configured locations"
     echo "  -e            Open the location in VSCodium"
     echo "  -f            Open the location in Finder"
-    echo "  -g.           Show git status of location"
+    echo "  -g            Show git status of location"
     return 0
   fi
 
